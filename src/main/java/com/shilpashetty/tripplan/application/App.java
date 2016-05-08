@@ -2,6 +2,7 @@ package com.shilpashetty.Tripplan.application;
 
 import org.skife.jdbi.v2.DBI;
 
+import com.shilpashetty.Tripplan.appmodel.ListArgumentFactory;
 import com.shilpashetty.Tripplan.config.TripPlanConfig;
 import com.shilpashetty.Tripplan.databasemodel.TripDAO;
 import com.shilpashetty.Tripplan.service.TripService;
@@ -24,6 +25,8 @@ public class App extends Application<TripPlanConfig>
         final DBI jdbi = factory.build(env, config.getDataSourceFactory(), "mysql");
         final TripService tripService = new TripService(jdbi);
         env.jersey().register(tripService);
+        jdbi.registerArgumentFactory(new ListArgumentFactory());
+
         // final TripDAO dao = jdbi.onDemand(TripDAO.class);
        // env.jersey().register(new UserResource(dao));
     	 

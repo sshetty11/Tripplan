@@ -20,11 +20,7 @@
     <artifactId>dropwizard-core</artifactId>
     <version>0.8.0</version>
     </dependency>
-    <dependency>
-	<groupId>junit</groupId>
-	<artifactId>junit</artifactId>
-	<version>4.11</version>
-</dependency>
+    
 <dependency>
 	<groupId>io.dropwizard</groupId>
 	<artifactId>dropwizard-jdbi</artifactId>
@@ -34,6 +30,16 @@
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
     <version>5.1.38</version>
+</dependency>
+<dependency>
+	<groupId>org.jmockit</groupId>
+	<artifactId>jmockit</artifactId>
+	<version>1.8</version>
+</dependency>
+<dependency>
+	<groupId>junit</groupId>
+	<artifactId>junit</artifactId>
+	<version>4.11</version>
 </dependency>
   </dependencies>
   <build>
