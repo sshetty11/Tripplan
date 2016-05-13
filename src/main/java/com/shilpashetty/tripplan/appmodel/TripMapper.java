@@ -11,7 +11,7 @@ import org.skife.jdbi.v2.tweak.ResultSetMapper;
 public class TripMapper implements ResultSetMapper<Trip>
 {
 	private Trip trip;
-	
+
 	public Trip map(int index, ResultSet r, StatementContext ctx) throws SQLException
 	{
 		if (index == 0){
@@ -20,14 +20,14 @@ public class TripMapper implements ResultSetMapper<Trip>
 		}
 		User attendee = new User(r.getString("attfname"), r.getString("attlname"), r.getString("attemail"));
 		if (!trip.getInvitees().contains(attendee)){
-				trip.getInvitees().add(attendee);
+			trip.getInvitees().add(attendee);
 		}
 		String location = r.getString("location_name");
 		if (!trip.getLocation_name().contains(location)){
-				trip.getLocation_name().add(location);
+			trip.getLocation_name().add(location);
 		}
 		return trip;
 	}
-	
-	
+
+
 }

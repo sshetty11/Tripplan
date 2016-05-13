@@ -26,9 +26,6 @@ public class App extends Application<TripPlanConfig>
         final TripService tripService = new TripService(jdbi);
         env.jersey().register(tripService);
         jdbi.registerArgumentFactory(new ListArgumentFactory());
-
-        // final TripDAO dao = jdbi.onDemand(TripDAO.class);
-       // env.jersey().register(new UserResource(dao));
     	 
     	
     }

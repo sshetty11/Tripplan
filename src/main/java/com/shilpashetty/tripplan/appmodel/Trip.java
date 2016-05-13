@@ -1,5 +1,4 @@
 package com.shilpashetty.Tripplan.appmodel;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,9 +11,9 @@ public class Trip {
 	private User organizer;
 	private List<String> location_name;
 	private List<User> invitees;
-	
+
 	public Trip(){
-		
+
 	}
 
 	public Trip(String name,Date startdate, Date enddate, User organizer, List<String> location_name, List<User> invitees){
@@ -41,7 +40,7 @@ public class Trip {
 	public void setOrganizer(User organizer) {
 		this.organizer = organizer;
 	}
-	
+
 	@JsonProperty
 	public List<String> getLocation_name() {
 		return location_name;
@@ -66,7 +65,7 @@ public class Trip {
 	public void setEnddate(Date enddate) {
 		this.enddate = enddate;
 	}
-	
+
 	@JsonProperty
 	public void setName(String name) {
 		this.name = name;
