@@ -1,0 +1,51 @@
+1. Configure the database instance access by populating user, password & url fields in the config.yml
+2. Run mvn clean && mvn package from the folder containing the pom
+3. Run java -jar target/Tripplan-0.0.1-SNAPSHOT.jar server config.yml to start the server after the build
+
+Posting a trip
+URL: localhost:9000/trip for creating, localhost:9000/trip/{id} for updating
+Type: POST
+Req: {
+  "name": "Winter",
+  "startdate": "2016-08-08",
+  "enddate": "2016-09-10",
+  "organizer": {
+    "firstName": "Danaereys",
+    "lastName": "Targarean",
+    "email": "dt@email.com"
+  },
+  "location_name": [
+    "Dragons",
+    "Palace"
+  ],
+  "invitees": [
+    {
+      "firstName": "Tyrion",
+      "lastName": "Lannister",
+      "email": "tl@email.com"
+    },
+    {
+      "firstName": "test",
+      "lastName": "Shetty",
+      "email": "test@email.com"
+    }
+  ]
+}
+
+Posting a chat
+URL: localhost:9000/trip/{id}/chat
+Type: POST
+Req:  {
+    "tripId": {id},
+    "creator": "suhas@email.com",
+    "text": "hey hi",
+    "createdDate": "1464777249"
+  }
+
+Fetching a trip
+URL: localhost:9000/trip/{id}
+Type: GET
+
+Fetching a trip
+URL: localhost:9000/trip/{id}/chat
+Type: GET
