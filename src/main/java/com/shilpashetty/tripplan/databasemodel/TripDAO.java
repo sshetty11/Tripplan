@@ -70,7 +70,7 @@ public interface TripDAO {
 	void deleteUser(@Bind("id") Integer id, @Bind("userId") Integer userId);
 
 	@Mapper(ChatMapper.class)
-	@SqlQuery("SELECT trip_id,concat(first_name,' ',last_name) as 'creator', text, unix_timestamp(created_date) as'created_date' FROM tripplan.chat C INNER JOIN tripplan.user_info UI ON C.creator = UI.id WHERE trip_id = 1 ORDER BY created_date")
+	@SqlQuery("SELECT trip_id,concat(first_name,' ',last_name) as 'creator', text, unix_timestamp(created_date) as'created_date' FROM tripplan.chat C INNER JOIN tripplan.user_info UI ON C.creator = UI.id WHERE trip_id = :id ORDER BY created_date")
 	List<Chat> getChatById(@Bind("id") Integer id);
 
 	@SqlUpdate("INSERT INTO tripplan.chat(trip_id,creator,created_date,text) VALUES(:trip_id, :creator, from_unixtime(:created_date), :text)")

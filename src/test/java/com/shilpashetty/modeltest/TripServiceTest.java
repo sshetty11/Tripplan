@@ -69,13 +69,9 @@ public class TripServiceTest {
 			dao.checkUser(anyString);times = 1 ; result = userId;
 			dao.setUser(anyString, anyString, anyString); times = 0; 
 			dao.setUserTrip(userId, tripId);times=1;
-			
-			
 		}};
 		TripService ts = new TripService(dbi);
-		Integer result = ts.setTrip(trip);
-		
-		
+		Integer result = ts.setTrip(trip);	
 	}
 	
 	public void testSetTripWithOrganizerIdNull() throws Exception{
@@ -99,8 +95,6 @@ public class TripServiceTest {
 			dao.checkUser(anyString);times = 1 ; result = null;
 			dao.setUser(anyString, anyString, anyString); times = 1; 
 			dao.setUserTrip(userId, tripId);times=1;
-			
-			
 		}};
 		TripService ts = new TripService(dbi);
 		Integer result = ts.setTrip(trip);
@@ -131,8 +125,6 @@ public class TripServiceTest {
 			dao.updateUser(tripId, anyString, anyString, anyString);times = 0;
 			dao.setUserTrip(userId, tripId);times = 1;
 			dao.deleteUser(tripId, userId);times = 0;
-			
-			
 		}};
 		TripService ts = new TripService(dbi);
 		 ts.updateTrip(tripId,trip);
@@ -163,8 +155,6 @@ public class TripServiceTest {
 			dao.updateUser(tripId, anyString, anyString, anyString);times = 1;
 			dao.setUserTrip(userId, tripId);times = 1;
 			dao.deleteUser(tripId, userId);times = 0;
-			
-			
 		}};
 		TripService ts = new TripService(dbi);
 		 ts.updateTrip(tripId,trip);

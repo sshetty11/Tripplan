@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.*;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.core.MediaType;
 
-import org.eclipse.jetty.util.log.Log;
 import org.skife.jdbi.v2.DBI;
 
 
@@ -33,9 +33,11 @@ public class TripService {
 	public Trip getTrip(@PathParam("id") int id) {
 		final TripDAO dao = jdbi.onDemand(TripDAO.class);
 		List<Trip> trip = dao.getTripById(id);
+		if (trip.isEmpty()) {
+			throw new NotFoundException();
+		}
 		return trip.get(0);
 	}
-
 
 	//get all the chat data
 	@GET
@@ -46,19 +48,16 @@ public class TripService {
 		final TripDAO dao = jdbi.onDemand(TripDAO.class);
 		List<Chat> chat = dao.getChatById(id);
 		return chat;
-
 	}
 
 	//set the chat data
 	@POST
-	@Path("/chat/")
+	@Path("/chat")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Integer setChat(Chat chat) {
+	public void setChat(Chat chat) {
 		final TripDAO dao = jdbi.onDemand(TripDAO.class);
 		Integer creatorId = dao.checkUser(chat.getCreator());
 		dao.setChat(chat.getTripId(),creatorId,chat.getText(),chat.getCreatedDate());
-		return creatorId;
-
 	}
 
 	//set all trip data
@@ -127,7 +126,6 @@ public class TripService {
 		}
 
 		for (String location:dbLocations){
-			System.out.println(location);
 			if(!locations.contains(location)){
 				//If the existing location is deleted then delete from db
 				dao.deleteLocation(id, location);
